@@ -11,11 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.rest.Login;
-import com.example.rest.MenuActivity;
 import com.example.rest.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 public class LoginAdmin extends AppCompatActivity {
     EditText aEmail,aPassword;
@@ -27,8 +23,8 @@ public class LoginAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_login_admin);
 
 
-        aEmail = findViewById(R.id.Email);
-        aPassword = findViewById(R.id.password);
+        aEmail = findViewById(R.id.des);
+        aPassword = findViewById(R.id.price);
         aLoginBtn = findViewById(R.id.loginBtn);
         progressBar = findViewById(R.id.progressBar);
 
@@ -56,7 +52,7 @@ public class LoginAdmin extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 if(email.equals("admin") || password.equals("password")) {
                     Toast.makeText(LoginAdmin.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MenuAdmin.class));
 
                 }else {
                     Toast.makeText(LoginAdmin.this, "Error" , Toast.LENGTH_SHORT).show();

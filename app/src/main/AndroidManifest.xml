@@ -9,18 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rest">
+        <activity android:name=".Admin.MenuAdmin"></activity>
         <activity
             android:name=".Admin.MainActivityAdmin"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/Theme.Rest.NoActionBar"></activity>
+            android:theme="@style/Theme.Rest.NoActionBar" />
         <activity
             android:name=".Admin.MainAdminActivity"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/Theme.Rest.NoActionBar"></activity>
+            android:theme="@style/Theme.Rest.NoActionBar" />
         <activity
             android:name=".Admin.MainAdmin"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/Theme.Rest.NoActionBar"></activity>
+            android:theme="@style/Theme.Rest.NoActionBar" />
         <activity android:name=".Admin.LoginAdmin" />
         <activity
             android:name=".MenuActivity"
