@@ -134,7 +134,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="12dp"
-        android:foreground="@drawable/ic_menu_gallery"
         android:scrollbarTrackHorizontal="@drawable/ic_menu_gallery"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintBottom_toTopOf="@+id/fullNamep"
