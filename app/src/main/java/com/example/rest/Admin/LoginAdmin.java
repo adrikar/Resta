@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.rest.Login;
 import com.example.rest.R;
 
 public class LoginAdmin extends AppCompatActivity {
     EditText aEmail,aPassword;
     Button aLoginBtn;
     ProgressBar progressBar;
+    TextView acreateText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,7 @@ public class LoginAdmin extends AppCompatActivity {
         aPassword = findViewById(R.id.price);
         aLoginBtn = findViewById(R.id.loginBtn);
         progressBar = findViewById(R.id.progressBar);
+        acreateText = findViewById(R.id.createText);
 
         aLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +61,11 @@ public class LoginAdmin extends AppCompatActivity {
                 }else {
                     Toast.makeText(LoginAdmin.this, "Error" , Toast.LENGTH_SHORT).show();
                 }
+            }
+        });acreateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
     }
