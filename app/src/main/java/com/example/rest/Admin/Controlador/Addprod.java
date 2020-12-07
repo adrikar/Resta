@@ -7,9 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,8 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
@@ -47,12 +51,12 @@ public class Addprod extends Fragment {
     Button aResgiterpBtn;
     ProgressBar aProgressBar;
     ImageView imageView;
-
     Context context;
+
+    private static final int file = 1;
+
     StorageReference reference;
-
-
-
+    Uri fileUri = null;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
@@ -65,6 +69,7 @@ public class Addprod extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_addprod, container, false);
+
         aName = root.findViewById(R.id.fullNamep);
         aDes = root.findViewById(R.id.des);
         aPrice = root.findViewById(R.id.price);
@@ -74,8 +79,10 @@ public class Addprod extends Fragment {
         aProgressBar = root.findViewById(R.id.progressBar);
 
         inicializarFirebase();
+
         reference = FirebaseStorage.getInstance().getReference();
 
+        imageView.setOnClickListener(v -> fileUpload());
 
         aResgiterpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +108,8 @@ public class Addprod extends Fragment {
                 if (TextUtils.isEmpty(cant)) {
                     aCant.setError("Quantity is Required.");
                     return;
-                }
+                } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(price) ) {
 
-                else if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(price)){
 
 
                     Product pro = new Product();
@@ -122,24 +128,40 @@ public class Addprod extends Fragment {
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(context, "Error ! " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    aProgressBar.setVisibility(View.GONE);
-                                }
-                            });
-
-                }aProgressBar.setVisibility(View.VISIBLE);
-
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Error ! " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            aProgressBar.setVisibility(View.GONE);
+                        }
+                    });
+                }
 
             }
         });
-
-    return root;
+        return root;
     }
+
+
     private void inicializarFirebase() {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference= firebaseDatabase.getReference();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void fileUpload() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        startActivityForResult(intent, file);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == file) {
+            if (resultCode == RESULT_OK) {
+                Uri fileUri = data.getData();
+
+            }
+        }
     }
 }

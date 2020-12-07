@@ -1,9 +1,12 @@
 package com.example.rest.Admin.modelA;
 
+import android.net.Uri;
+
 public class Product {
     private String name, descri, productId;
     private String price;
-    private String cant, imag;
+    private String cant;
+    private String imag;
 
     public String getImag() {
         return imag;
