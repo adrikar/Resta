@@ -108,10 +108,8 @@ public class Addprod extends Fragment {
                 if (TextUtils.isEmpty(cant)) {
                     aCant.setError("Quantity is Required.");
                     return;
-                } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(price) ) {
-
-
-
+                } else  {
+                    
                     Product pro = new Product();
                     pro.setProductId(UUID.randomUUID().toString());
                     pro.setName(name);
