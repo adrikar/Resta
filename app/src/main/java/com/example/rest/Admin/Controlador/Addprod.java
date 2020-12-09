@@ -1,6 +1,7 @@
 package com.example.rest.Admin.Controlador;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -36,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -56,7 +58,7 @@ public class Addprod extends Fragment {
     private static final int file = 1;
 
     StorageReference reference;
-    Uri fileUri = null;
+    Uri fileUri ;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
@@ -118,11 +120,13 @@ public class Addprod extends Fragment {
                     pro.setCant(cant);
 
 
+
                     databaseReference.child("Product").child(pro.getProductId()).setValue(pro)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getActivity().getApplicationContext(), MenuAdmin.class));
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -147,19 +151,20 @@ public class Addprod extends Fragment {
     }
 
     private void fileUpload() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent();
         intent.setType("*/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, file);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == file) {
-            if (resultCode == RESULT_OK) {
-                Uri fileUri = data.getData();
-
-            }
+        if (requestCode == file && requestCode == RESULT_OK
+        && data != null && data.getData() != null) {
+            fileUri = data.getData();
+            imageView.setImageURI(fileUri);
         }
     }
+
 }

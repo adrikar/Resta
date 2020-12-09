@@ -6,25 +6,17 @@ public class Product {
     private String name, descri, productId;
     private String price;
     private String cant;
-    private String imag;
+    private String imagUrl;
 
-    public String getImag() {
-        return imag;
+
+    public Product() {
     }
-
-    public void setImag(String imag) {
-        this.imag = imag;
-    }
-
     public String getProductId() {
         return productId;
     }
 
     public void setProductId(String productId) {
         this.productId = productId;
-    }
-
-    public Product() {
     }
 
     public String getName() {
@@ -57,5 +49,13 @@ public class Product {
 
     public void setCant(String cant) {
         this.cant = cant;
+    }
+
+    public String getImagUrl() {
+        return imagUrl;
+    }
+
+    public void setImagUrl(String imagUrl) {
+        this.imagUrl = imagUrl;
     }
 }
