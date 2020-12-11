@@ -177,16 +177,7 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_inf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/aclonica"
-            android:background="@android:color/white"
-            android:text="Volver"
-            android:textColor="@android:color/white" />
+
 
     </LinearLayout>
 

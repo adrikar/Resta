@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     ImageView ubi;
+    ImageView inf;
 
 
     @Override
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
+        inf= findViewById(R.id.infomenu);
         ubi = findViewById(R.id.ubicacion);
 
         ubi.setOnClickListener(new View.OnClickListener() {
@@ -31,7 +32,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), LocationActivity.class));
             }
         });
+
+        inf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), InformationActivity.class));
+            }
+        });
+
+
     }
+
 
 
 
