@@ -59,10 +59,10 @@ public class Register extends AppCompatActivity {
         inicializarFirebase();
 
 
-        if(fAuth.getCurrentUser() != null){
+        /*if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
-        }
+        }*/
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override

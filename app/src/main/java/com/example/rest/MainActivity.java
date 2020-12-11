@@ -1,16 +1,20 @@
 package com.example.rest;
 
+import androidx.annotation.BinderThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.example.rest.Admin.MenuAdmin;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-
+    ImageView ubi;
 
 
     @Override
@@ -18,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ubi = findViewById(R.id.ubicacion);
+
+        ubi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+            }
+        });
     }
 
 
@@ -28,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
     }
+
 
 
 

@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MenuAdmin extends AppCompatActivity {
+
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tab1,tab2,tab3;

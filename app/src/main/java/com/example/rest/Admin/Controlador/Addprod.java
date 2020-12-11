@@ -59,6 +59,7 @@ public class Addprod extends Fragment {
 
     StorageReference reference;
     Uri fileUri ;
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 

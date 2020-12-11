@@ -127,6 +127,7 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/infomenu"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:src="@drawable/info"
@@ -168,6 +169,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/ubicacion"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:padding="2dp"
