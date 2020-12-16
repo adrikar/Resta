@@ -27,6 +27,7 @@ public class MenuAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddProd.class));
+                startActivity(new Intent(getApplicationContext(), ViewImageActivity.class));
             }
         });
     }
