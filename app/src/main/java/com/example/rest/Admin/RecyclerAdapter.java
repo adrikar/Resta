@@ -7,6 +7,7 @@ import androidx.annotation.*;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.*;
+import com.example.rest.Admin.Model.Product;
 import com.example.rest.R;
 
 import java.util.*;
@@ -15,11 +16,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private static final String Tag = "RecyclerView";
     private Context mContext;
-    private ArrayList<Messages> messagesList;
+    private ArrayList<Product> productList;
 
-    public RecyclerAdapter(Context mContext, ArrayList<Messages> messagesList){
+    public RecyclerAdapter(Context mContext, ArrayList<Product> productList) {
         this.mContext = mContext;
-        this.messagesList=messagesList;
+        this.productList = productList;
     }
 
     @NonNull
@@ -38,10 +39,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(messagesList.get(position).getName());
+        holder.textView.setText(productList.get(position).getName());
 
         Glide.with(mContext)
-                .load(messagesList.get(position).getImageUrl())
+                .load(productList.get(position).getImage())
                 .into(holder.imageView);
 
 
@@ -53,7 +54,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return messagesList.size();
+        return productList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

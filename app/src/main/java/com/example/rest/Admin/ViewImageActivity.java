@@ -10,6 +10,7 @@ import android.content.Context;
 
 
 import com.example.rest.Admin.*;
+import com.example.rest.Admin.Model.Product;
 import com.example.rest.R;
 import com.google.firebase.database.*;
 
@@ -19,7 +20,7 @@ public class ViewImageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     private DatabaseReference myRef;
-    private ArrayList<Messages> messagesList;
+    private ArrayList<Product> productList;
     private RecyclerAdapter recyclerAdapter;
     private Context mContext;
 
@@ -38,7 +39,7 @@ public class ViewImageActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         myRef= FirebaseDatabase.getInstance().getReference();
-        messagesList= new ArrayList<>();
+        productList= new ArrayList<>();
 
 
         ClearAll();
@@ -55,14 +56,14 @@ public class ViewImageActivity extends AppCompatActivity {
                 ClearAll();
                 for (DataSnapshot snapshot: datasnapshot.getChildren()){
 
-                    Messages messages = new Messages();
-                    messages.setImageUrl(snapshot.child("image").getValue().toString());
-                    messages.setName(snapshot.child("name").getValue().toString());
+                    Product pro = new Product();
+                    pro.setImage(snapshot.child("image").getValue().toString());
+                    pro.setName(snapshot.child("name").getValue().toString());
 
-                    messagesList.add(messages);
+                   productList.add(pro);
 
                 }
-                recyclerAdapter= new RecyclerAdapter(getApplicationContext(), messagesList);
+                recyclerAdapter= new RecyclerAdapter(getApplicationContext(), productList);
                 recyclerView.setAdapter(recyclerAdapter);
                 recyclerAdapter.notifyDataSetChanged();
             }
@@ -79,8 +80,8 @@ public class ViewImageActivity extends AppCompatActivity {
     }
 
     private  void ClearAll(){
-        if(messagesList!= null){
-            messagesList.clear();
+        if(productList!= null){
+            productList.clear();
 
             if(recyclerAdapter!=null){
                 recyclerAdapter.notifyDataSetChanged();
@@ -88,7 +89,7 @@ public class ViewImageActivity extends AppCompatActivity {
 
             }
         }
-        messagesList= new ArrayList<>();
+        productList= new ArrayList<>();
 
 
     }
