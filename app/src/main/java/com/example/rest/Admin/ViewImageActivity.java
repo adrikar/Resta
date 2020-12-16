@@ -59,6 +59,8 @@ public class ViewImageActivity extends AppCompatActivity {
                     Product pro = new Product();
                     pro.setImage(snapshot.child("image").getValue().toString());
                     pro.setName(snapshot.child("name").getValue().toString());
+                    pro.setDascri(snapshot.child("dascri").getValue().toString());
+
 
                    productList.add(pro);
 

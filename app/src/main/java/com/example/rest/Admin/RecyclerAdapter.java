@@ -40,15 +40,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView.setText(productList.get(position).getName());
+        holder.textView1.setText(productList.get(position).getDascri());
 
         Glide.with(mContext)
                 .load(productList.get(position).getImage())
                 .into(holder.imageView);
-
-
-
-
-
 
     }
 
@@ -60,11 +56,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textView;
+        TextView textView1;
+        TextView textView2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
+            textView1 = itemView.findViewById(R.id.textView1);
+            textView2 =itemView.findViewById(R.id.textView2);
         }
     }
 }
