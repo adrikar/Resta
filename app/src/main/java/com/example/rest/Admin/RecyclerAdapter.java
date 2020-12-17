@@ -35,7 +35,7 @@ public class RecyclerAdapter extends FirebaseRecyclerAdapter<Product,RecyclerAda
         return new myviewholder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder{
+    public class myviewholder extends RecyclerView.ViewHolder{
         ImageView img ;
         TextView namep, des, precio;
 
