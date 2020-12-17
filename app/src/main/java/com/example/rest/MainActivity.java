@@ -2,6 +2,7 @@ package com.example.rest;
 
 import androidx.annotation.BinderThread;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.location.Location;
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     ImageView ubi;
     ImageView inf;
+    CardView menu;
 
 
     @Override
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inf= findViewById(R.id.infomenu);
         ubi = findViewById(R.id.ubicacion);
+        menu = findViewById(R.id.menuuser);
 
         ubi.setOnClickListener(new View.OnClickListener() {
             @Override

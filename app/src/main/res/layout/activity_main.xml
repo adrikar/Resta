@@ -68,6 +68,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/menuuser"
             android:clickable="true"
             android:layout_width="160dp"
             android:layout_height="190dp"

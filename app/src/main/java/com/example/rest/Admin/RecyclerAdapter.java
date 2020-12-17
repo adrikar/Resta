@@ -9,62 +9,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.*;
 import com.example.rest.Admin.Model.Product;
 import com.example.rest.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.*;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class RecyclerAdapter extends FirebaseRecyclerAdapter<Product,RecyclerAdapter.myviewholder> {
+    public RecyclerAdapter(@NonNull FirebaseRecyclerOptions<Product> options) {
+        super(options);
+    }
 
-    private static final String Tag = "RecyclerView";
-    private Context mContext;
-    private ArrayList<Product> productList;
-
-    public RecyclerAdapter(Context mContext, ArrayList<Product> productList) {
-        this.mContext = mContext;
-        this.productList = productList;
+    @Override
+    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull Product model)
+    {
+        holder.namep.setText(model.getName());
+        holder.des.setText("Descripcion: "+model.getDascri());
+        holder.precio.setText("Precio: "+model.getPrice().toString()+" Bs.");
+        Glide.with(holder.img.getContext()).load(model.getImage()).into(holder.img);
     }
 
     @NonNull
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.message_item,parent,false);
-
-        return new ViewHolder(view);
-
-
-
-
+    public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
+        return new myviewholder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(productList.get(position).getName());
-        holder.textView1.setText(productList.get(position).getDascri());
+    class myviewholder extends RecyclerView.ViewHolder{
+        ImageView img ;
+        TextView namep, des, precio;
 
-        Glide.with(mContext)
-                .load(productList.get(position).getImage())
-                .into(holder.imageView);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return productList.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView;
-        TextView textView;
-        TextView textView1;
-        TextView textView2;
-
-        public ViewHolder(@NonNull View itemView) {
+        public myviewholder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
-            textView = itemView.findViewById(R.id.textView);
-            textView1 = itemView.findViewById(R.id.textView1);
-            textView2 =itemView.findViewById(R.id.textView2);
+            img = (ImageView)itemView.findViewById(R.id.imageview);
+            namep= (TextView)itemView.findViewById(R.id.nametxt);
+            des= (TextView)itemView.findViewById(R.id.descritxt);
+            precio = (TextView)itemView.findViewById(R.id.preciotxt);
+
         }
     }
+
+
 }

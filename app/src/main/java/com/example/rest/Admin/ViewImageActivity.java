@@ -12,6 +12,7 @@ import android.content.Context;
 import com.example.rest.Admin.*;
 import com.example.rest.Admin.Model.Product;
 import com.example.rest.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.*;
 
 import java.util.*;
@@ -19,10 +20,8 @@ import java.util.*;
 public class ViewImageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    private DatabaseReference myRef;
-    private ArrayList<Product> productList;
     private RecyclerAdapter recyclerAdapter;
-    private Context mContext;
+
 
 
 
@@ -32,69 +31,28 @@ public class ViewImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_image);
 
-        recyclerView =findViewById(R.id.recyclerView);
+        recyclerView =(RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
-        myRef= FirebaseDatabase.getInstance().getReference();
-        productList= new ArrayList<>();
-
-
-        ClearAll();
-        GetDataFromFirebase();
+        FirebaseRecyclerOptions<Product> options =
+                new FirebaseRecyclerOptions.Builder<Product>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Product"), Product.class)
+                        .build();
+        recyclerAdapter = new RecyclerAdapter(options);
+        recyclerView.setAdapter(recyclerAdapter);
 
 
     }
 
-    private void GetDataFromFirebase() {
-        Query query = myRef.child("Product");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                ClearAll();
-                for (DataSnapshot snapshot: datasnapshot.getChildren()){
-
-                    Product pro = new Product();
-                    pro.setImage(snapshot.child("image").getValue().toString());
-                    pro.setName(snapshot.child("name").getValue().toString());
-                    pro.setDascri(snapshot.child("dascri").getValue().toString());
-
-
-                   productList.add(pro);
-
-                }
-                recyclerAdapter= new RecyclerAdapter(getApplicationContext(), productList);
-                recyclerView.setAdapter(recyclerAdapter);
-                recyclerAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        recyclerAdapter.startListening();
     }
 
-    private  void ClearAll(){
-        if(productList!= null){
-            productList.clear();
-
-            if(recyclerAdapter!=null){
-                recyclerAdapter.notifyDataSetChanged();
-
-
-            }
-        }
-        productList= new ArrayList<>();
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        recyclerAdapter.stopListening();
     }
-
-
 }
