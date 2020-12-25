@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -39,11 +40,13 @@ public class InfoUser extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                nom.setText(snapshot.child("name").getValue(String.class));
+               corr.setText(snapshot.child("email").getValue(String.class));
+               tel.setText(snapshot.child("phone").getValue(String.class));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(),"Error!",Toast.LENGTH_SHORT).show();
             }
         });
     }
