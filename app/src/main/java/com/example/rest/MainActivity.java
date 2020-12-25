@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     ImageView ubi;
     ImageView inf;
-    CardView menu;
+    CardView menu, infouser;
 
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         inf= findViewById(R.id.infomenu);
         ubi = findViewById(R.id.ubicacion);
         menu = findViewById(R.id.menuuser);
+        infouser = findViewById(R.id.infoUs);
 
         ubi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), RestMenu.class));
             }
         });
-
+        infouser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), InfoUser.class));
+            }
+        });
 
     }
 

@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rest">
-        <activity android:name=".RestMenu"></activity>
+        <activity android:name=".InfoUser"></activity>
+        <activity android:name=".PedidoMenu" />
+        <activity android:name=".RestMenu" />
         <activity android:name=".Admin.AddProd" />
         <activity android:name=".Admin.ViewImageActivity" />
         <activity android:name=".Admin.MenuAdmin" />

@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/imageview"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/ic_launcher" />
 
@@ -54,12 +54,34 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
 
+        <EditText
+            android:id="@+id/cantidad"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/preciotxt"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:background="@android:color/darker_gray"
+            android:ems="10"
+            android:hint="Cantidad"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btncarrito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Añadir"
-            android:layout_below="@+id/preciotxt"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/cantidad"
             android:layout_toRightOf="@+id/imageview"/>
 
 

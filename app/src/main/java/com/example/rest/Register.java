@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    String userId;
 
 
 
@@ -93,14 +94,14 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                            userId = fAuth.getCurrentUser().getUid();
                             User user = new User();
-                            user.setUserId(UUID.randomUUID().toString());
+                            user.setUserId(userId);
                             user.setName(name);
                             user.setEmail(email);
                             user.setPassword(password);
                             user.setPhone(phone);
-                            databaseReference.child("User").child(user.getUserId()).setValue(user);
+                            databaseReference.child("User").child(userId).setValue(user);
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
