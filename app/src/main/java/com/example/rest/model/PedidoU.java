@@ -37,4 +37,13 @@ public class PedidoU {
     public void setCant(int cant) {
         this.cant = cant;
     }
+
+    @Override
+    public String toString() {
+        return "PedidoU{" +
+                "name='" + name + '\'' +
+                ", user='" + user + '\'' +
+                ", cant=" + cant +
+                '}';
+    }
 }
