@@ -78,7 +78,7 @@ public class AdapterMenu extends FirebaseRecyclerAdapter<Product,AdapterMenu.myv
                     DatabaseReference data = (DatabaseReference) db.getReference("User").child(userId);
                     User us = new User();
                     PedidoU ped = new PedidoU(namep.getText().toString(),us.getName(),Integer.valueOf(cant.getText().toString()));
-                    data.child("Pedido").setValue(ped);
+                    data.child("Pedido").push().setValue(ped);
 
                     cant.setText("");
 
