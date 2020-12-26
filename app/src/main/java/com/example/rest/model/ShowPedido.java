@@ -41,7 +41,7 @@ public class ShowPedido extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
         databaseReference=FirebaseDatabase.getInstance().getReference("User").child(userId).child("Pedido");
         listView=(ListView)findViewById(R.id.listviewtxt);
-        arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
+        arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2,arrayList);
         listView.setAdapter(arrayAdapter);
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
