@@ -40,10 +40,9 @@ public class PedidoU {
 
     @Override
     public String toString() {
-        return "PedidoU{" +
+        return "Pedido" +
                 "name='" + name + '\'' +
-                ", user='" + user + '\'' +
                 ", cant=" + cant +
-                '}';
+                ", user='" + user + '\'' ;
     }
 }
