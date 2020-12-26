@@ -29,19 +29,24 @@ public class ShowPedido extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arrayList= new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
+    String userId;
+    FirebaseAuth fAuth ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showpedido);
-        databaseReference=FirebaseDatabase.getInstance().getReference("User/Pedido");
+        fAuth = FirebaseAuth.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
+        databaseReference=FirebaseDatabase.getInstance().getReference("User").child(userId).child("Pedido");
         listView=(ListView)findViewById(R.id.listviewtxt);
         arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value=dataSnapshot.getValue(PedidoU.class).toString();
+                String value=snapshot.getValue(PedidoU.class).toString();
                 arrayList.add(value);
                 arrayAdapter.notifyDataSetChanged();
             }

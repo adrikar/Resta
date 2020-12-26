@@ -84,9 +84,6 @@ public class AdapterMenu extends FirebaseRecyclerAdapter<Product,AdapterMenu.myv
 
 
 
-
-
-
                 }
             });
 
