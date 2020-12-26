@@ -22,6 +22,13 @@ public class MenuAdmin extends AppCompatActivity {
         menu= findViewById(R.id.menuprod);
         add= findViewById(R.id.addProd);
 
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PedidoAdmin.class));
+            }
+        });
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

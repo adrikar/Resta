@@ -71,14 +71,19 @@ public class AdapterMenu extends FirebaseRecyclerAdapter<Product,AdapterMenu.myv
                 @Override
                 public void onClick(View v) {
                     String userId;
+                    String name;
                     FirebaseAuth fAuth ;
                     fAuth = FirebaseAuth.getInstance();
                     userId = fAuth.getCurrentUser().getUid();
+                    name = fAuth.getCurrentUser().getDisplayName();
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference data = (DatabaseReference) db.getReference("User").child(userId);
                     User us = new User();
                     PedidoU ped = new PedidoU(namep.getText().toString(),Integer.valueOf(cant.getText().toString()));
                     data.child("Pedido").push().setValue(ped);
+
+                    DatabaseReference pedi = (DatabaseReference)db.getReference("Pedido");
+                    pedi.child(userId).push().setValue(ped);
 
                     cant.setText("");
 
