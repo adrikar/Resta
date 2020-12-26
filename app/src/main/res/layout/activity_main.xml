@@ -12,14 +12,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp">
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Menú Principal"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:layout_margin="10dp"/>
     </LinearLayout>
     <LinearLayout
@@ -32,7 +32,7 @@
             android:clickable="true"
             android:id="@+id/bankcardId"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="15dp">
@@ -71,7 +71,7 @@
             android:id="@+id/menuuser"
             android:clickable="true"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="15dp">
@@ -118,7 +118,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="15dp">
@@ -158,7 +158,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="15dp"
             app:cardBackgroundColor="@color/gray">
@@ -212,7 +212,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="15dp">
@@ -252,7 +252,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_height="170dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="15dp"
             app:cardBackgroundColor="@color/gray">
@@ -297,8 +297,9 @@
     </LinearLayout>
     <LinearLayout
         android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        android:gravity="center">
+        android:layout_width="match_parent"
+        android:gravity="start">
+
         <Button
             android:id="@+id/button"
             android:layout_width="345dp"
