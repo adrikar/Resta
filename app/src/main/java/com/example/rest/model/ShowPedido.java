@@ -46,7 +46,9 @@ public class ShowPedido extends AppCompatActivity {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                 String value=snapshot.getValue(PedidoU.class).toString();
+                arrayList.add(userId);
                 arrayList.add(value);
                 arrayAdapter.notifyDataSetChanged();
             }
