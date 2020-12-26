@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.rest.Admin.Model.Product;
-import com.example.rest.Admin.RecyclerAdapter;
-import com.example.rest.model.ShowPedido;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 

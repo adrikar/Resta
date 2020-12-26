@@ -1,16 +1,20 @@
 package com.example.rest.model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 public class PedidoU {
-    String name, user;
+    String name;
 
     int cant;
 
     public PedidoU() {
     }
 
-    public PedidoU(String name, String user, int cant) {
+    public PedidoU(String name, int cant) {
         this.name = name;
-        this.user = user;
+
         this.cant = cant;
     }
 
@@ -22,14 +26,6 @@ public class PedidoU {
         this.name = name;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public int getCant() {
         return cant;
     }
@@ -38,11 +34,11 @@ public class PedidoU {
         this.cant = cant;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public String toString() {
-        return "Pedido" +
-                "name='" + name + '\'' +
-                ", cant=" + cant +
-                ", user='" + user + '\'' ;
+        return
+                "Nombre:'" + name + '\''+System.lineSeparator()+
+                "Cantidad:" + cant ;
     }
 }

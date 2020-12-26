@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rest">
         <activity android:name=".InfoUser"></activity>
-        <activity android:name=".model.ShowPedido"/>
+        <activity android:name=".ShowPedido"/>
         <activity android:name=".RestMenu" />
         <activity android:name=".Admin.AddProd" />
         <activity android:name=".Admin.ViewImageActivity" />
